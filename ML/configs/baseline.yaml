@@ -1,0 +1,64 @@
+project:
+  name: energy_storage_fault_diagnosis
+  label_names:
+    0: healthy
+    1: vbus_sensor_bias
+    2: inductor_current_sensor_bias
+    3: switch_S1_open
+    4: switch_S2_open
+
+data:
+  label_column: WindowFaultID
+  eligibility_column: IsTrainingEligible
+  group_column: OperatingPointID
+  run_column: RunID
+  expected_labels: [0, 1, 2, 3, 4]
+  split_ratios: [0.70, 0.15, 0.15]
+  split_max_attempts: 2000
+  group_cv_folds: 6
+  group_cv_max_attempts: 2000
+
+features:
+  feature_set: physics_enhanced
+  include_mode_command: true
+  remove_constant_from_training: true
+
+models:
+  random_forest:
+    n_estimators: 500
+    max_depth: null
+    min_samples_leaf: 1
+    max_features: sqrt
+    class_weight: balanced
+    n_jobs: -1
+  svm:
+    C: 10.0
+    gamma: scale
+    kernel: rbf
+    class_weight: balanced
+    cache_size: 2048
+    large_sample_warning: 50000
+  xgboost:
+    n_estimators: 500
+    learning_rate: 0.05
+    max_depth: 6
+    min_child_weight: 1.0
+    subsample: 0.85
+    colsample_bytree: 0.85
+    reg_alpha: 0.0
+    reg_lambda: 1.0
+    early_stopping_rounds: 30
+    n_jobs: -1
+
+tuning:
+  enabled: false
+  parameter_grid:
+    random_forest:
+      max_depth: [null, 12]
+      min_samples_leaf: [1, 3]
+    svm:
+      C: [1.0, 10.0]
+      gamma: [scale, 0.1]
+    xgboost:
+      learning_rate: [0.05, 0.1]
+      max_depth: [4, 6]
