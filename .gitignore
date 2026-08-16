@@ -1,0 +1,70 @@
+# Python environments and caches
+ML/.venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Generated ML artifacts
+ML/results/*
+!ML/results/.gitkeep
+ML/models/*
+!ML/models/.gitkeep
+ML/reports/
+ML/notebooks/*.ipynb
+*.joblib
+*.ubj
+
+# MATLAB and Simulink generated artifacts
+**/slprj/
+**/*.slxc
+**/*.mex*
+**/*.autosave
+**/*.dmr
+**/codegen/
+**/simulink_cache/
+**/simulink_codegen/
+**/parallel_jobs/
+work/
+.simtmp/
+.matlab_pref_resume/
+
+# Large generated datasets
+simulink/experiments/**/dataset_output*/
+simulink/experiments/**/results/
+simulink/models/backups/
+simulink/models/*before*.slx
+simulink/references/
+external_data/
+output/
+
+# Local research material, archives, and inspection scratch files
+reference/
+archive/
+tmp/
+ML/research/
+ML/EXPANDED_EXPERIMENT_WORKFLOW_CN.md
+ML/scripts/portable_report_bridge.mjs
+simulink/experiments/sensor_bias/scripts/MCP_数据处理修复报告.md
+simulink/models/HEALTHFIX_2026-07-30.md
+.agents/
+.satk/
+.vscode/
+MIGRATION_REPORT.md
+PAUSED_STATE_*.md
+*.zip
+储能电池双向Buck-Boost变换器充放电控制仿真【附建模仿真分析说明文档】/
+
+# Documentation build and render QA
+docs/_build/
+docs/_rendered/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.tmp
