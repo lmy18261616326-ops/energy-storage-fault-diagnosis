@@ -1,4 +1,5 @@
 # Audited on Windows / Python 3.13. Use requirements.txt for portable installs.
+h5py==3.14.0
 ipykernel==7.3.0
 joblib==1.5.3
 matplotlib==3.11.1
